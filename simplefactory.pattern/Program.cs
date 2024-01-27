@@ -1,15 +1,30 @@
-﻿
+﻿/*
+缺點：違反開放封閉原則，如果要新增一種鳥，就要修改工廠，不符合開放封閉原則
+也就是需要修改BirdFactory，在switch裡面加上新的case或是修改Dictionary，
+但開放封閉原則希望你用新增的方式取代修改，也就是若要新增一種鳥，就要新增一個類別，而不是修改原本的BirdFactory，
+如何解決請看我的FactoryMethod Pattern
+
+另外應該把具體產品角色的類別設為內部類別，這樣客戶端就無法直接new物件，只能透過工廠取得物件，降低耦合，但目前這個範例沒有這樣做
+*/
+
+
+// 客戶端，不直接new物件，而是透過工廠取得物件，降低耦合，萬一物件改變，只要改工廠就好
+var eagle = BirdFactory.GetBird("Eagle");
+var swan = BirdFactory.GetBird("Swan");
+Console.WriteLine($"Bird Name : {eagle.Name}");
+Console.WriteLine($"Bird Name : {swan.Name}");
+
 //抽象產品角色
 public interface IBird
 {
-    string Name { get; set; }
+    string Name { get; }
     void Fly();
 }
 
 //具體產品角色
 public class Eagle : IBird
 {
-    public string Name { get; set; } = "老鷹";
+    public string Name  => "老鷹";
 
     public void Fly()
     {
@@ -17,9 +32,9 @@ public class Eagle : IBird
     }
 }
 
-public class Swan : IBird
+internal class Swan : IBird
 {
-    public string Name { get; set; } = "天鵝";
+    public string Name => "天鵝";
 
     public void Fly()
     {
@@ -30,13 +45,12 @@ public class Swan : IBird
 //工廠角色：使用 switch 實作
 public static class BirdFactory
 {
-    private static readonly Dictionary<string, IBird> _birds;
-    static BirdFactory()
+    private static readonly Dictionary<string, IBird> _birds = new()
     {
-        _birds = new Dictionary<string, IBird>();
-        _birds.Add("Eagle", new Eagle());
-        _birds.Add("Swan", new Swan());
-    }
+        { "Swan", new Swan() },
+        { "Eagle", new Eagle() }
+        //若要新增一種鳥，需要在這裡加上，但這樣就算是修改現有代碼，違反開放封閉原則
+    };
     public static IBird GetBird(string birdName)
     {
         // switch (birdName)
@@ -60,10 +74,3 @@ public static class BirdFactory
         return bird ?? throw new Exception("No match bird!");
     }
 }
-
-
-// 客戶端，不直接new物件，而是透過工廠取得物件，降低耦合，萬一物件改變，只要改工廠就好
-var eagle = BirdFactory.GetBird("Eagle");
-var swan = BirdFactory.GetBird("Swan");
-Console.WriteLine($"Bird Name : {eagle.Name}");
-Console.WriteLine($"Bird Name : {swan.Name}");

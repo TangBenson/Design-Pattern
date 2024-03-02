@@ -3,12 +3,18 @@
 這樣的代碼真他媽的香啊！
 */
 
+using factory.pattern;
+
+//範例一
 var eagleFactory = new EagleFactory();
 var swanFactory = new SwanFactory();
 var eagle = eagleFactory.CreateBird();
 var swan = swanFactory.CreateBird();
 Console.WriteLine($"Bird Name : {eagle.Name}");
 Console.WriteLine($"Bird Name : {swan.Name}");
+//範例二
+IStoreFactory store = new Kfc();
+Console.WriteLine($"Food Name : {store.CreateChip().Name}");
 
 public interface IBird
 {

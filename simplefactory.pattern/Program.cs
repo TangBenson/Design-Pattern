@@ -1,4 +1,5 @@
 ﻿/*
+客戶端，不直接new物件，而是透過工廠取得物件，降低耦合，萬一物件改變，只要改工廠就好
 缺點：違反開放封閉原則，如果要新增一種鳥，就要修改工廠，不符合開放封閉原則
 也就是需要修改BirdFactory，在switch裡面加上新的case或是修改Dictionary，
 但開放封閉原則希望你用新增的方式取代修改，也就是若要新增一種鳥，就要新增一個類別，而不是修改原本的BirdFactory，
@@ -7,12 +8,20 @@
 另外應該把具體產品角色的類別設為內部類別，這樣客戶端就無法直接new物件，只能透過工廠取得物件，降低耦合，但目前這個範例沒有這樣做
 */
 
+using simplefactory.pattern;
 
-// 客戶端，不直接new物件，而是透過工廠取得物件，降低耦合，萬一物件改變，只要改工廠就好
+//範例一
 var eagle = BirdFactory.GetBird("Eagle");
 var swan = BirdFactory.GetBird("Swan");
 Console.WriteLine($"Bird Name : {eagle.Name}");
 Console.WriteLine($"Bird Name : {swan.Name}");
+//範例二
+var food1 = McdonladFactory.GetFood("Chips");
+var food2 = McdonladFactory.GetFood("McChicken");
+// var food3 = McdonladFactory.GetFood("Burger");
+Console.WriteLine($"Food Name : {food1.Name}");
+Console.WriteLine($"Food Name : {food2.Name}");
+// Console.WriteLine($"Food Name : {food3.Name}");
 
 //抽象產品角色
 public interface IBird

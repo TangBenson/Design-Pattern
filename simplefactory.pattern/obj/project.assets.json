@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nerod\\Documents\\GitHub\\Design-Pattern\\simplefactory.pattern\\simplefactory.pattern.csproj",
+      "projectUniqueName": "c:\\Users\\nerod\\Documents\\GitHub\\Design-Pattern\\simplefactory.pattern\\simplefactory.pattern.csproj",
       "projectName": "simplefactory.pattern",
-      "projectPath": "C:\\Users\\nerod\\Documents\\GitHub\\Design-Pattern\\simplefactory.pattern\\simplefactory.pattern.csproj",
+      "projectPath": "c:\\Users\\nerod\\Documents\\GitHub\\Design-Pattern\\simplefactory.pattern\\simplefactory.pattern.csproj",
       "packagesPath": "C:\\Users\\nerod\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nerod\\Documents\\GitHub\\Design-Pattern\\simplefactory.pattern\\obj\\",
+      "outputPath": "c:\\Users\\nerod\\Documents\\GitHub\\Design-Pattern\\simplefactory.pattern\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\nerod\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -58,7 +58,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.320\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.321\\RuntimeIdentifierGraph.json"
       }
     }
   }
